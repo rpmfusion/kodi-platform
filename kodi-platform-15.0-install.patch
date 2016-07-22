@@ -1,0 +1,12 @@
+diff -up ./CMakeLists.txt.orig ./CMakeLists.txt
+--- ./CMakeLists.txt.orig	2015-05-04 12:32:24.000000000 +0200
++++ ./CMakeLists.txt	2015-07-19 05:39:38.910280201 +0200
+@@ -64,7 +64,7 @@ ENDIF(NOT WIN32)
+ configure_file (kodiplatform-config.cmake.in
+                 kodiplatform-config.cmake @ONLY)
+ install(FILES ${CMAKE_BINARY_DIR}/kodiplatform-config.cmake
+-        DESTINATION ${CMAKE_INSTALL_LIBDIR_NOARCH}/kodiplatform)
++        DESTINATION ${LIB_INSTALL_DIR}/cmake/${CMAKE_PROJECT_NAME})
+ 
+ # Quell warnings with in-tree builds
+ set(KODI_BUILD_DIR ${KODI_BUILD_DIR})
