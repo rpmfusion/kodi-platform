@@ -1,0 +1,24 @@
+diff -up ./CMakeLists.txt.orig ./CMakeLists.txt
+--- ./CMakeLists.txt.orig	2015-08-05 09:01:57.000000000 +0200
++++ ./CMakeLists.txt	2016-07-22 22:40:46.943554980 +0200
+@@ -8,7 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PAT
+ find_package(kodi REQUIRED)
+ find_package(TinyXML REQUIRED)
+ find_package(Threads REQUIRED)
+-find_package(platform REQUIRED)
++find_package(p8-platform REQUIRED)
+ include(UseMultiArch.cmake)
+ include(CheckAtomic.cmake)
+ 
+diff -up ./src/util/XMLUtils.h.orig ./src/util/XMLUtils.h
+--- ./src/util/XMLUtils.h.orig	2015-08-05 09:01:57.000000000 +0200
++++ ./src/util/XMLUtils.h	2016-07-22 22:41:13.395521520 +0200
+@@ -21,7 +21,7 @@
+  *
+  */
+ 
+-#include <platform/util/StdString.h>
++#include <p8-platform/util/StdString.h>
+ #include "tinyxml.h"
+ 
+ class XMLUtils
