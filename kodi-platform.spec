@@ -2,12 +2,12 @@
 # try using the same hash that upstream uses for the current Kodi version
 # available in RPMFusion. It can be found in the Kodi source tree like so:
 # project/cmake/addons/depends/common/kodi-platform/kodi-platform.txt
-%global commit 15edaf78d6307eaa5e1d17028122d8bce9d55aa2
+%global commit c8188d82678fec6b784597db69a68e74ff4986b5
 %global short_commit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20150805
+%global commit_date 20160516
 
 Name:           kodi-platform
-Version:        16.0
+Version:        17.0
 Release:        0.1.%{commit_date}git%{short_commit}%{?dist}
 Summary:        Kodi platform support library
 
@@ -19,8 +19,6 @@ Source0:        https://github.com/xbmc/%{name}/archive/%{short_commit}/%{name}-
 Source1:        http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
 # Fix .cmake files installation path
 Patch0:         %{name}-15.0-install.patch
-# Fix p8-platform library detection
-Patch1:         %{name}-16.0-p8_platform.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -49,7 +47,6 @@ developing applications that use %{name}.
 %prep
 %setup -q -n %{name}-%{commit}
 %patch0 -p0 -b .install
-%patch1 -p0 -b .p8_platform
 
 cp %{SOURCE1} .
 
@@ -82,6 +79,9 @@ cp %{SOURCE1} .
 
 
 %changelog
+* Tue Aug 09 2016 Mohamed El Morabity <melmorabity@fedoraproject.org> - 17.0-0.1.20160516gitc8188d8
+- Sync with Kodi 17.0 alpha 3
+
 * Fri Jul 22 2016 Mohamed El Morabity <melmorabity@fedoraproject.org> - 16.0-0.1.20150805git15edaf7
 - Sync with Kodi 16.0
 
