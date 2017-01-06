@@ -8,7 +8,7 @@
 
 Name:           kodi-platform
 Version:        17.0
-Release:        0.1.%{commit_date}git%{short_commit}%{?dist}
+Release:        0.2.%{commit_date}git%{short_commit}%{?dist}
 Summary:        Kodi platform support library
 
 Group:          System Environment/Libraries
@@ -79,6 +79,9 @@ cp %{SOURCE1} .
 
 
 %changelog
+* Fri Jan 06 2017 Nicolas Chauvet <kwizart@gmail.com> - 17.0-0.2.20160516gitc8188d8
+- Rebuild for libcec/platform
+
 * Tue Aug 09 2016 Mohamed El Morabity <melmorabity@fedoraproject.org> - 17.0-0.1.20160516gitc8188d8
 - Sync with Kodi 17.0 alpha 3
 
