@@ -8,7 +8,7 @@
 
 Name:           kodi-platform
 Version:        17.0
-Release:        0.2.%{commit_date}git%{short_commit}%{?dist}
+Release:        0.3.%{commit_date}git%{short_commit}%{?dist}
 Summary:        Kodi platform support library
 
 Group:          System Environment/Libraries
@@ -25,6 +25,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  kodi-devel >= %{version}
 BuildRequires:  platform-devel
 BuildRequires:  tinyxml-devel
+
+ExclusiveArch:  i686 x86_64
 
 %description
 %{summary}.
@@ -79,6 +81,9 @@ cp %{SOURCE1} .
 
 
 %changelog
+* Fri Jan 06 2017 Nicolas Chauvet <kwizart@gmail.com> - 17.0-0.3.20160516gitc8188d8
+- Use ExclusiveArch for kodi
+
 * Fri Jan 06 2017 Nicolas Chauvet <kwizart@gmail.com> - 17.0-0.2.20160516gitc8188d8
 - Rebuild for libcec/platform
 
