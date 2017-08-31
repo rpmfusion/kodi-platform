@@ -8,7 +8,7 @@
 
 Name:           kodi-platform
 Version:        17.0
-Release:        0.4.%{commit_date}git%{short_commit}%{?dist}
+Release:        0.5.%{commit_date}git%{short_commit}%{?dist}
 Summary:        Kodi platform support library
 
 Group:          System Environment/Libraries
@@ -81,6 +81,9 @@ cp %{SOURCE1} .
 
 
 %changelog
+* Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 17.0-0.5.20160516gitc8188d8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
 * Sun Mar 19 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 17.0-0.4.20160516gitc8188d8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
