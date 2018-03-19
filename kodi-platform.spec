@@ -1,22 +1,19 @@
 # Upstream kodi hardcodes a Git hash for OSes that bundle kodi-platform. Let's
 # try using the same hash that upstream uses for the current Kodi version
 # available in RPMFusion. It can be found in the Kodi source tree like so:
-# project/cmake/addons/depends/common/kodi-platform/kodi-platform.txt
-%global commit c8188d82678fec6b784597db69a68e74ff4986b5
-%global short_commit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20160516
+# cmake/addons/depends/common/kodi-platform/kodi-platform.txt
+%global commit e8574b883ffa2131f2eeb96ff3724d60b21130f7
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+%global commitdate 20180302
 
 Name:           kodi-platform
-Version:        17.0
-Release:        0.6.%{commit_date}git%{short_commit}%{?dist}
+Version:        18.0
+Release:        0.1.%{commitdate}git%{shortcommit}%{?dist}
 Summary:        Kodi platform support library
 
-Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            https://github.com/xbmc/kodi-platform/
-Source0:        https://github.com/xbmc/%{name}/archive/%{short_commit}/%{name}-%{short_commit}.tar.gz
-# GPLv2 license file
-Source1:        http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+Source0:        https://github.com/xbmc/%{name}/archive/%{shortcommit}/%{name}-%{shortcommit}.tar.gz
 # Fix .cmake files installation path
 Patch0:         %{name}-15.0-install.patch
 
@@ -25,7 +22,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  kodi-devel >= %{version}
 BuildRequires:  platform-devel
 BuildRequires:  tinyxml-devel
-
 ExclusiveArch:  i686 x86_64
 
 %description
@@ -34,9 +30,8 @@ ExclusiveArch:  i686 x86_64
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       cmake
+Requires:       cmake-filesystem
 Requires:       kodi-devel%{?_isa} >= %{version}
 Requires:       platform-devel%{?_isa}
 Requires:       tinyxml-devel%{?_isa}
@@ -47,10 +42,7 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q -n %{name}-%{commit}
-%patch0 -p0 -b .install
-
-cp %{SOURCE1} .
+%autosetup -n %{name}-%{commit}
 
 
 %build
@@ -62,14 +54,10 @@ cp %{SOURCE1} .
 %make_install
 
 
-%post -p /sbin/ldconfig
-
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 
 %files
-%license gpl-2.0.txt
 %{_libdir}/*.so.*
 
 
@@ -81,6 +69,9 @@ cp %{SOURCE1} .
 
 
 %changelog
+* Fri Mar 16 2018 Mohamed El Morabity <melmorabity@fedoraproject.org> - 18.0-0.1.20180302gite8574b8
+- Update to latest snapshot for Kodi 18
+
 * Thu Mar 01 2018 RPM Fusion Release Engineering <leigh123linux@googlemail.com> - 17.0-0.6.20160516gitc8188d8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
