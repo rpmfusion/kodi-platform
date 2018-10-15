@@ -8,7 +8,7 @@
 
 Name:           kodi-platform
 Version:        18.0
-Release:        0.3.%{commitdate}git%{shortcommit}%{?dist}
+Release:        0.4.%{commitdate}git%{shortcommit}%{?dist}
 Summary:        Kodi platform support library
 
 License:        GPLv2+
@@ -22,7 +22,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  kodi-devel >= %{version}
 BuildRequires:  platform-devel
 BuildRequires:  tinyxml-devel
-ExclusiveArch:  i686 x86_64 aarch64
+ExcludeArch:    %{power64} ppc64le
 
 %description
 %{summary}.
@@ -69,6 +69,9 @@ developing applications that use %{name}.
 
 
 %changelog
+* Mon Oct 15 2018 Mohamed El Morabity <melmorabity@fedoraproject.org> - 18.0-0.4.20180302gite8574b8
+- Enable arm build
+
 * Thu Aug 30 2018 Mohamed El Morabity <melmorabity@fedoraproject.org> - 18.0-0.3.20180302gite8574b8
 - Enable aarch64 build
 
