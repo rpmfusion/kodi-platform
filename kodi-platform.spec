@@ -8,7 +8,7 @@
 
 Name:           kodi-platform
 Version:        18.0
-Release:        0.4.%{commitdate}git%{shortcommit}%{?dist}
+Release:        0.5.%{commitdate}git%{shortcommit}%{?dist}
 Summary:        Kodi platform support library
 
 License:        GPLv2+
@@ -69,6 +69,9 @@ developing applications that use %{name}.
 
 
 %changelog
+* Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 18.0-0.5.20180302gite8574b8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Mon Oct 15 2018 Mohamed El Morabity <melmorabity@fedoraproject.org> - 18.0-0.4.20180302gite8574b8
 - Enable arm build
 
