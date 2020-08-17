@@ -6,6 +6,8 @@
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global commitdate 20180302
 
+%undefine __cmake_in_source_build
+
 Name:           kodi-platform
 Version:        18.0
 Release:        0.7.%{commitdate}git%{shortcommit}%{?dist}
@@ -17,7 +19,7 @@ Source0:        https://github.com/xbmc/%{name}/archive/%{shortcommit}/%{name}-%
 # Fix .cmake files installation path
 Patch0:         %{name}-15.0-install.patch
 
-BuildRequires:  cmake
+BuildRequires:  cmake3
 BuildRequires:  gcc-c++
 BuildRequires:  kodi-devel >= %{version}
 BuildRequires:  platform-devel
@@ -46,12 +48,12 @@ developing applications that use %{name}.
 
 
 %build
-%cmake .
-%make_build
+%cmake3
+%cmake3_build
 
 
 %install
-%make_install
+%cmake3_install
 
 
 %ldconfig_scriptlets
