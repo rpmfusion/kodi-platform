@@ -6,20 +6,20 @@
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global commitdate 20180302
 
-%undefine __cmake_in_source_build
-
 Name:           kodi-platform
 Version:        18.0
-Release:        0.12.%{commitdate}git%{shortcommit}%{?dist}
+Release:        0.13.%{commitdate}git%{shortcommit}%{?dist}
 Summary:        Kodi platform support library
 
 License:        GPLv2+
-URL:            https://github.com/xbmc/kodi-platform/
-Source0:        https://github.com/xbmc/%{name}/archive/%{shortcommit}/%{name}-%{shortcommit}.tar.gz
+URL:            https://github.com/xbmc/kodi-platform
+Source0:        %url/archive/%{shortcommit}/%{name}-%{shortcommit}.tar.gz
 # Fix .cmake files installation path
 Patch0:         %{name}-15.0-install.patch
+# Fix gcc-13 build
+Patch1:         %url/commit/541985fd646c84edf0067aac03c09c8412bd6fad.patch#/%{name}-18.0-gcc13.patch
 
-BuildRequires:  cmake3
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  kodi-devel >= %{version}
 BuildRequires:  platform-devel
@@ -44,16 +44,16 @@ developing applications that use %{name}.
 
 
 %prep
-%autosetup -n %{name}-%{commit}
+%autosetup -p1 -n %{name}-%{commit}
 
 
 %build
-%cmake3
-%cmake3_build
+%cmake
+%cmake_build
 
 
 %install
-%cmake3_install
+%cmake_install
 
 
 %ldconfig_scriptlets
@@ -71,6 +71,9 @@ developing applications that use %{name}.
 
 
 %changelog
+* Fri Jan 27 2023 Leigh Scott <leigh123linux@gmail.com> - 18.0-0.13.20180302gite8574b8
+- Rebuilt for kodi-20
+
 * Sun Aug 07 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 18.0-0.12.20180302gite8574b8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1

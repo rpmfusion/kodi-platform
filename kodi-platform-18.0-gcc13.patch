@@ -1,0 +1,26 @@
+From 541985fd646c84edf0067aac03c09c8412bd6fad Mon Sep 17 00:00:00 2001
+From: Olaf Hering <olaf@aepfle.de>
+Date: Mon, 29 Apr 2019 14:08:08 +0200
+Subject: [PATCH] define fixed width integer types
+
+XMLUtils uses uint32_t in public header files, but makes no attempt to define that data type.
+
+Fix this by including <cstdint>.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ src/util/XMLUtils.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/util/XMLUtils.h b/src/util/XMLUtils.h
+index 1480280..ed87581 100644
+--- a/src/util/XMLUtils.h
++++ b/src/util/XMLUtils.h
+@@ -21,6 +21,7 @@
+  *
+  */
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ #include "tinyxml.h"
